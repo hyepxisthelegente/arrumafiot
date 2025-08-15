@@ -1,0 +1,70 @@
+
+@layer base {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background-secondary));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  /* Performance optimizations */
+  .container {
+    contain: layout style paint;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  section {
+    contain: layout style;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .fade-in,
+  .slide-up,
+  .reveal-visible {
+    will-change: auto;
+  }
+
+  /* Image optimizations */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  img[loading="lazy"] {
+    transition: opacity 0.3s ease;
+  }
+  
+  img[loading="lazy"]:not([src]) {
+    opacity: 0;
+  }
+
+  /* Mobile responsiveness fixes */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    * {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .fade-in {
+      animation-duration: 0.3s;
+    }
+    
+    .slide-up {
+      animation-duration: 0.4s;
+    }
+  }
+}
